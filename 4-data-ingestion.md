@@ -10,7 +10,7 @@ This section will dive deeper into YARN.
 - Solves the concerns of bulk imports from RDBMS into Hadoop for MapReduce jobs and the consistency that needs to be maintained;
 - Works alongside Oozie as the workflow engine to automate import and export tasks; 
 - Can also transform data using MapReduce or Hive without coding; 
-![Elements of Sqoop](./img/sqoop/1-1_why_sqoop.png)
+![Elements of Sqoop](./img/sqoop/1_1-why-sqoop.png)
 - Benefits of using sqoop:  
 ![Elements of Sqoop](./img/sqoop/1_2-benefits-of-sqoop.png)
 - Sqoop import database records into files, with fields comma-delimited with newline as the records termination char by default;
@@ -18,10 +18,10 @@ This section will dive deeper into YARN.
 ![Elements of Sqoop](./img/sqoop/1_3-sqoop-import-process.png)
 - The summary of the export process is as follows:  
 ![Elements of Sqoop](./img/sqoop/1_4-sqoop-export-process.png)
-- There ar 3 types of sqoop connectors we can use:
+- There ar 3 types of sqoop connectors we can use:  
 ![Elements of Sqoop](./img/sqoop/1_5-sqoop-connectors.png)
--However sqoop has its limitations and are summarized as follows:
-![Elements of Sqoop](./img/sqoop/1_6-limitations-of-sqoop.png)
+-However sqoop has its limitations and are summarized as follows:  
+![Elements of Sqoop](./img/sqoop/1_6-sqoop-limitations-of-sqoop.png)
 
 ### 2. Apache Flume
 - A distributed and reliable service for importing data into HDFS or HBase from streaming data sources, e.g. log data; can be used for unstructured data as opposed to sqoop;
@@ -42,5 +42,34 @@ This section will dive deeper into YARN.
 
 
 ### 3. Apache Kafka
-- ??.
+- A high performance, real-time messaging system;
+- **Use cases for Kafka:**  
+![Elements of Kafka](./img/kafka/3_1-kafka-use-cases.png)  
+- **Kafka Data Model**  
+![Elements of Kafka](./img/kafka/3_2-kafka-data-model.png)  
+-- Comprises of producers, consumers and brokers;
+-- Brokers make up a Kafka cluster.
+- **Kafka topics**  
+![Elements of Kafka](./img/kafka/3_3-kafka-topics.png)  
+- Messages are split into partitions where the num of partitions also mean num of parallelism;
+- A topic can have any number of partitions.
+- **Kafka partitions**  
+![Elements of Kafka](./img/kafka/3_4-kafka-partitions.png)  
+-- Num of partitions decides the parallelism of the topic;
+-- A partition can be replicated across several servers for fault tolerance, with one server marked as the **leader** of the partition and others as **followers**;
+-- The **Leader** controls the read/write for the partition whereas the **Followers** replicate the data;
+-- One of the **Followers** become the **Leader** when it fails, selected via the ZooKeeper;
+--  Messages are added to the end of a partition in a FIFO fashion by a Kakfa producer, which also decides which partition a message is being sent to in a topic.
+- **Kafka consumers**  
+![Elements of Kafka](./img/kafka/3_5-kafka-consumers.png)  
+- **Kafka architecture**  
+![Elements of Kafka](./img/kafka/3_6-kafka-achitecture.png)  
+-- Brokers are stateless and ZooKeeper maintains the cluster state and is responsible for managing and coordinating Kafka brokers;  
+-- The ZooKeeper service is mainly used to notify producers and consumers of new brokers or failure of brokers in the cluster;
+-- The consumers have to keep track of the messages consumed using a partition offset; this is not managed by the brokers since they are stateless; if a consumer acknowledges a particular message offset, it signals it has consumed all prior messages;  
+- **Kafka API**  
+![Elements of Kafka](./img/kafka/3_7-kafka-api-groups.png)  
+- **Kafka Connect**   
+![Elements of Kafka](./img/kafka/3_8-kafka-connect-overview.png)  
+-- Compared to commercial `Confluent Connector`, which is an alternative to Kafka Connect with additional tools, clients and pre-built connectors such as Kafka Connect JDBC, Kafka Connect S3 (sink only), SAP Hana Connector etc.
 --- 
