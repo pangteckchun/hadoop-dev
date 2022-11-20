@@ -6,6 +6,7 @@ This section will dive deeper into Apache Hive.
 - Provides SQL like interface for users to extract data from the underlying Hadoop system [HDFS, HBase];
 - Like Presto but limited to Hadoop backend only;  
 ![Elements of Hive](./img/hive/1_1-hive-overview.png)
+- Hive cannot delete individual records as compared to our regular RDBMS;
 
 ### Features of Hive
 ![Elements of Hive](./img/hive/1_2-hive-features.png)
