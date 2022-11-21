@@ -36,4 +36,10 @@
 ![Components of Hadoop](./img/hadoop_intro/hue_functions.png)
 ---
 
+## References
+**Public datasets for our testing use**  
+![Components of Hadoop](./img/hadoop_intro/ref_1-public-datasets-for-testing.png)  
+
+---
+
 
